@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            min-height: 100vh;
+            padding: 0;
+        }
+    </style>
+    <script type="module" src="https://bundle.run/buffer@5.6.0"></script>
+    <script type="module">
+        import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
+        import {GLTFLoader} from 'https://unpkg.com/three@0.119.1/examples/jsm/loaders/GLTFLoader.js';
+
+        window.init = function(width, height) {
+            const renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: true,
+                preserveDrawingBuffer: true
+            });
+            renderer.setSize(width, height);
+            renderer.physicallyCorrectLights = true;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+            window.renderer = renderer;
+            window.canvas = renderer.domElement;
+            window.ctx = renderer.getContext();
+
+            const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+            window.camera = camera;
+
+            const scene = new THREE.Scene();
+            window.scene = scene;
+
+            {
+                const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
+                scene.add(ambientLight);
+                window.ambientLight = ambientLight;
+            }
+
+            {
+                const dirLight = new THREE.DirectionalLight(0xFFFFFF, 4);
+                dirLight.position.set(0, 7, 7);
+                dirLight.target.position.set(0, 7, 0);
+                scene.add(dirLight);
+                scene.add(dirLight.target);
+                window.dirLight = dirLight;
+            }
+
+            const loader = new GLTFLoader();
+
+            return new Promise((resolve, reject) => {
+                loader.load("./helmet.glb",
+                    gltf => {
+                        window.model = gltf.scene;
+                        model.scale.set(0.05, 0.05, 0.05);
+                        model.position.set(0, 5, 0);
+                        scene.add(model);
+                        camera.position.set(0, 4, 10);
+                        camera.lookAt(0, 5, 0);
+                        resolve();
+                    },
+                    xhr => {
+                        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+                    },
+                    error => {
+                        console.log( 'An error happened' );
+                        reject(error);
+                    }
+                );
+            });
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

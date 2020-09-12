@@ -1,0 +1,26 @@
+{
+  "real_webcam": "/dev/video0",
+  "fake_webcam": "/dev/video20",
+  "background": "./resources/background.jpg",
+  "face_orientation_model": "./face_orientation/model.json",
+  "height": 720,
+  "width": 1280,
+  "dilation": 2,
+  "blur": 15,
+  "moving_avg_ratio": 0.5,
+  "profiling_max_samples": 30,
+  "body_pix_loading_parameters": {
+    "architecture": "ResNet50",
+    "outputStride": 16,
+    "multiplier": 1,
+    "quantBytes": 4
+  },
+  "body_pix_segmentation_parameters": {
+    "flipHorizontal": false,
+    "internalResolution": "full",
+    "segmentationThreshold": 0.7
+  },
+  "2d_to_3d_coefficient": 9,
+  "2d_x_offset": 0,
+  "2d_y_offset": 4.5
+}

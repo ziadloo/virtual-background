@@ -19,10 +19,6 @@ to delete the container, its image and the downloaded folder.
 
 1. First make sure that your NVIDIA driver is installed
 1. Then, Install [`nvidia-docker2`](https://github.com/NVIDIA/nvidia-docker)
-1. Navigate to the project's folder and build the docker file (heads up, it will take a while):
-   ```
-   docker build -t virtual_background .
-   ```
 1. Install [`v4l2loopback`](https://github.com/umlaeute/v4l2loopback) for your flavor of Linux
 1. To setup the `v412loopback`, run the following commands in shell:
     ```
@@ -32,6 +28,10 @@ to delete the container, its image and the downloaded folder.
    This last command is creating a virtual webcam as the device `/dev/video20` (assuming it's available, if it isn't
    just change the command) 
 1. Edit the `resoures/config.json` file and change it to match your needs
+1. Navigate to the project's folder and build the docker file (heads up, it will take a while):
+   ```
+   docker build -t virtual_background .
+   ```
 1. Make sure no application is using your physical webcam
 1. Run the container after you changed to the root folder of the project (for the `$(pwd)` to work properly):
     ```

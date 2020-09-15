@@ -1,6 +1,6 @@
 # Virtual Background
 Virtual background for Webcams in Linux using machine learning. This source code is accompanying my
-[blog post](https://challengeenthusiast.com/2020/09/11/virtual-background-for-webcams-in-linux-using-ml/).
+[blog post](https://challengeenthusiast.com/2020/09/13/virtual-background-for-webcams-in-linux-using-ml/).
 For description on how it is developed, please refer to the blog post.
 
 The aim of this code is to use BodyPix project to remove the background and at the same time project a helmet onto the

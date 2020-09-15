@@ -40,7 +40,7 @@ to delete the container, its image and the downloaded folder.
         --device=/dev/video20:/dev/video20 \
         virtual_background
     ```
-1. Run the browser and enjoy
+1. Run Chrome and enjoy (based on my test, FireFox does not work)
 
 ### Note
 
